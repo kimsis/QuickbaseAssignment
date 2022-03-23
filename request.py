@@ -19,13 +19,6 @@ def get_contact(id):
     except:
         return response.status_code
 
-def get_false_contact(id):
-    headers = {
-        'Content-Type': 'application/json',
-    }
-    response = requests.get(f'{freshdeskUrl}/contacts/{id}', headers=headers, auth=(token_freshdesk, 'X'))
-    return response
-
 def post_contact(user):
     # Adding current datetime to make the email unique,
     # as the freshdesk API needs 30 minutes to delete a contact
@@ -46,6 +39,12 @@ def delete_contact(id):
 
 if(__name__ == '__main__'):
     user = get_user()
+    print('\nUser Info:')
+    pprint(user)
     id = post_contact(user)['id']
+    print(f'\nContact id: {id}\n')
     contact = get_contact(id)
-    delete_contact(id)
+    print('Contact info:')
+    pprint(contact)
+    status_code = delete_contact(id)
+    print(f'\nDelete status: {status_code}')
