@@ -25,3 +25,14 @@ aside from the main 3 components trere are several other files namely:
     launch - a file which has launch configurations for the debugging extension used
 __pycache__
     externals/request.cpython-310.pyc - automatically generated cache files, not sure what their purpose and contents are
+
+To run the solutions use the following scripts:
+
+    Main Solution:
+        python request.py #username #freshdesk_subdomain
+    e.g.
+        python request.py kimsis kimsis
+    Unit/Integration tests:
+        python test_request.py #username #freshdesk_subdomain
+    e.g.
+        python test_request.py kimsis kimsis

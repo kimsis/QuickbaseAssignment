@@ -58,12 +58,12 @@ class TestRequest(unittest.TestCase):
 
     def test_post_contact_invalid(self):
         # Save the user name, set it to none to test invalid post, and reset it back to its previous value
+        expected_result = json.loads('{"description": "Validation failed", "errors": [{"field": "name", "message": "It should not be blank as this is a mandatory field", "code": "invalid_value"}]}')
+
         name = mock_user['name']
         mock_user['name'] = None
-        expected_result = json.loads('{"description": "Validation failed", "errors": [{"field": "name", "message": "It should not be blank as this is a mandatory field", "code": "invalid_value"}]}')
-        mock_user['name'] = name
-
         user_result = request.post_contact(mock_user)
+        mock_user['name'] = name
 
         self.assertEqual(expected_result, user_result)
 
