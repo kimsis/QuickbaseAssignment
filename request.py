@@ -46,5 +46,6 @@ if(__name__ == '__main__'):
     contact = get_contact(id)
     print('Contact info:')
     pprint(contact)
-    status_code = delete_contact(id)
-    print(f'\nDelete status: {status_code}')
+    # Commented out as it defeats the main goal, by deleting the expected observable resulting contact
+    # status_code = delete_contact(id)
+    # print(f'\nDelete status: {status_code}')
